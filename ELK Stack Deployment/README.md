@@ -94,11 +94,8 @@ We have installed the following Beats on these machines:
     
 These Beats allow us to collect the following information from each machine:
 
-    Filebeat allows for a lightweight way to forward and centralize logs and files. This provides a GUI and infographic view in order to track down curious behavior across aggregated logs.
-    Metricbeat allows for a lightweight way to send system and service statistics. This provides a GUI and infographic view of system-level CPU usage, memory, file system, disk IO, network IO statistics, and top-like statistics for every process running on your systems.
-    Packetbeat is a real-time network packet analyzer that can provide application monitoring and performance analytics. It captures the network traffic between your application servers. It can help you notice issues with your back-end application.
-    Auditbeat collects your Linux audit framework data and monitors the integrity of files in real-time.
-    Heartbeat monitors services for the availability with active probing. Heartbeat easily generates uptime and response time data.
+* Filebeat allows for a lightweight way to forward and centralize logs and files. This provides a GUI and infographic view in order to track down curious behavior across aggregated logs.
+* Metricbeat allows for a lightweight way to send system and service statistics. This provides a GUI and infographic view of system-level CPU usage, memory, file system, disk IO, network IO statistics, and top-like statistics for every process running on your systems.
 
 <Using the Playbook>
 
