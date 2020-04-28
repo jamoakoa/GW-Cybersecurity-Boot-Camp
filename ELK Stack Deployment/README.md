@@ -1,6 +1,6 @@
-The files in this repository were used to configure the network display below:
+The files in this repository were used to configure the network displayed below:
 
-![]()
+![](images/Azure_Network_Topology.png)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the main.yml file may be used to install only certain pieces of it, such as DVWA.
 
@@ -97,7 +97,7 @@ These Beats allow us to collect the following information from each machine:
 * Filebeat allows for a lightweight way to forward and centralize logs and files. This provides a GUI and infographic view in order to track down curious behavior across aggregated logs.
 * Metricbeat allows for a lightweight way to send system and service statistics. This provides a GUI and infographic view of system-level CPU usage, memory, file system, disk IO, network IO statistics, and top-like statistics for every process running on your systems.
 
-<Using the Playbook>
+Using the Playbook
 
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned:
 
@@ -114,4 +114,4 @@ sudo docker attach <container_name>
         elastic.search output (uncomment and replace localhost with your local IP for your ELK server)
     Run the playbook, and navigate to http://<Elk-Server-Public-IP>:5601 to check that the installation worked as expected.
 
-ansible-playbook /etc/ansible/main.yml
+ansible-playbook /etc/ansible/<filename>.yml
