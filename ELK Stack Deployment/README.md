@@ -1,22 +1,24 @@
 The files in this repository were used to configure the network display below:
 
+![]()
+
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the main.yml file may be used to install only certain pieces of it, such as DVWA.
 
     install-dvwa.yml
 
 This document contains the following details:
 
-   - Description of the Topology
+   * Description of the Topology
    
-    - Access Policies
+   * Access Policies
    
-   - ELK Configuration
+   * ELK Configuration
    
-   - Beats in Use
+   * Beats in Use
    
-   - Machines Being Monitored
+   * Machines Being Monitored
    
-   - How to Use the Ansible Build
+   * How to Use the Ansible Build
 
 Description of the Topology
 
@@ -41,22 +43,17 @@ Only the Jump Box machine can accept connections from the Internet. Access to th
 Machines within the network can only be accessed by redacted (home network IP).
 
 A summary of the access policies in place can be found in the table below.
-Name 	Publicly Accessible 	Allowed IP Addresses
-Jump Box 	No 	redacted (home network IP)
-DVWA-VM1 	No 	10.0.0.5 redacted (home network IP)
-DVWA-VM2 	No 	10.0.0.5 redacted (home network IP)
-ELK Server 	No 	10.0.0.5 redacted (home network IP)
+
+Name | Publicly Accessible | Allowed IP Addresses
+---- | ------------------- | ---------------------
+Jump Box | No | Confidential (Local Network IP)
+DVWA-VM1 | No |	Confidential (Local Network IP)
+DVWA-VM2 | No |	COnfidential (Local Network IP)
+ELK Server | No | Confidential (Local Network IP)
 
 Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because it increases accuracy, be eliminating human error in retyping commands and saves time. Roles were also utilized to increase re-usability. A main.yml file references the main.yml within each ansible role to run each playbook with one command. The main file can easily be edited to add or remove roles and therefore which playbooks are run.
-
-The main playbook implements the following roles, which then implement the individual playbooks listed below:
-
-    Setup Webservers
-    Install Elk Server
-    Install Filebeat
-    Install Metricbeat
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because it increases accuracy, be eliminating human error in retyping commands and saves time.
 
 The setup-webservers playbook implements the following tasks:
 
@@ -81,3 +78,43 @@ The install-filebeat playbook implements the following tasks:
     Enable and Configure System Module
     Setup filebeat
     Start filebeat service
+
+The following screenshots display the result of running docker ps after successfully configuring the ELK instance.
+Target Machines & Beats
+
+This ELK server is configured to monitor the following machines:
+
+    10.2.0.5
+    10.2.0.6
+
+We have installed the following Beats on these machines:
+
+    * filebeat
+    * metricbeat
+    
+These Beats allow us to collect the following information from each machine:
+
+    Filebeat allows for a lightweight way to forward and centralize logs and files. This provides a GUI and infographic view in order to track down curious behavior across aggregated logs.
+    Metricbeat allows for a lightweight way to send system and service statistics. This provides a GUI and infographic view of system-level CPU usage, memory, file system, disk IO, network IO statistics, and top-like statistics for every process running on your systems.
+    Packetbeat is a real-time network packet analyzer that can provide application monitoring and performance analytics. It captures the network traffic between your application servers. It can help you notice issues with your back-end application.
+    Auditbeat collects your Linux audit framework data and monitors the integrity of files in real-time.
+    Heartbeat monitors services for the availability with active probing. Heartbeat easily generates uptime and response time data.
+
+<Using the Playbook>
+
+In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned:
+
+SSH into the control node and follow the steps below:
+
+ssh -i <key_name/location> <username>@<Jump-Box-Public-IP>
+sudo docker start <container_name>
+sudo docker attach <container_name>
+
+    Copy the entire roles folder, including subfolders and files to /etc/ansible/roles/.
+    Update the host file to include the IP addresses for the webservers and the elkserver.
+    Update each configuration file with the following information:
+        kibana host (uncomment and replace localhost with your local IP for your ELK server)
+        elastic.search output (uncomment and replace localhost with your local IP for your ELK server)
+    Run the playbook, and navigate to http://<Elk-Server-Public-IP>:5601 to check that the installation worked as expected.
+
+ansible-playbook /etc/ansible/main.yml
