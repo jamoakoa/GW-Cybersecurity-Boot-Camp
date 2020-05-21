@@ -82,6 +82,8 @@ The install-filebeat playbook implements the following tasks:
 The following screenshots display the result of running docker ps after successfully configuring the ELK instance.
 Target Machines & Beats
 
+![](images/docker_ps.png)
+
 This ELK server is configured to monitor the following machines:
 
     10.2.0.5
