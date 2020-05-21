@@ -84,6 +84,11 @@ Target Machines & Beats
 
 ![](images/docker_ps.png)
 
+Webserver Beats
+
+![](images/filebeats.png)
+
+
 This ELK server is configured to monitor the following machines:
 
     10.2.0.5
